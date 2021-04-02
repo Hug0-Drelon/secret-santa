@@ -1,20 +1,81 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <p class="description">
+        Description of the app.
+    </p>
+    <form action="" method="POST" class="form">
+        <h2 class="form-title">
+            #host <span class="info">(included in participants)</span>
+        </h2>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div class="form-host">
+            <div class="form-input host-name">
+                <label for="host-name">name</label>
+                <input type="text" name="name" id="host-name">
+            </div>
+            <div class="form-input host-email">
+                <label for="host-email">host-email</label>
+                <input type="text" name="email" id="host-email">
+            </div>
+        </div>
+        
+        <h2 class="form-title">
+            #guests <span class="info">(2 min. required)</span>
+        </h2>
+        
+        <div class="form-guest">
+            <div class="form-input guest-name">
+                <label for="guest-name">name</label>
+                <input type="text" name="name" id="guest-name">
+            </div>
+            <div class="form-input guest-email">
+                <label for="guest-email">host-email</label>
+                <input type="text" name="email" id="guest-email">
+            </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/projets-perso/secret-santa/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/projets-perso/secret-santa/templates/main/index.html.twig'|file_link(0) }}">templates/main/index.html.twig</a></code></li>
-    </ul>
-</div>
+            <div class="form-input guest-name">
+                <label for="guest-name">name</label>
+                <input type="text" name="name" id="guest-name">
+            </div>
+            <div class="form-input guest-email">
+                <label for="guest-email">host-email</label>
+                <input type="text" name="email" id="guest-email">
+            </div>
+
+            <img class="guest-add" src="{{ asset('assets/images/add.png') }}" alt="add-icon">
+        </div>
+
+        <h2 class="form-title">
+            #event
+        </h2>
+        
+        <div class="form-event">
+            <div class="form-input event-name">
+                <label for="event-name">event name</label>
+                <input type="text" name="name" id="event-name">
+            </div>
+            <div class="form-input event-amount">
+                <label for="event-amount">amount</label>
+                <input type="number" name="amount" id="event-amount">
+            </div>
+            <div class="form-input event-date">
+                <label for="event-date">date</label>
+                <input type="date" name="date" id="event-date">
+            </div>
+            <div class="form-input event-place">
+                <label for="event-place">place</label>
+                <input type="text" name="place" id="event-place">
+            </div>
+            <div class="form-input event-comment">
+                <label for="event-comment">comment</label>
+                <textarea name="comment" id="event-comment" rows="5" cols="50">
+                </textarea>
+            </div>
+        </div>
+
+        <div class="form-submit-button">
+            <input type="submit" value="submit">
+        </div>
+    </form>
 {% endblock %}
