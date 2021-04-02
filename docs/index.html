@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Secret Santa</title>
+</head>
+<body>
+    <header>
+        <h1 class="title">
+            Secret Santa
+        </h1>
+    </header>
+    <main>
+        <p class="description">
+            Description of the app.
+        </p>
+        <form action="" method="POST" class="form">
+            <h2 class="form-title">
+                #host
+            </h2>
+
+            <div class="form-host">
+                <div class="form-input host-name">
+                    <label for="host-name">name</label>
+                    <input type="text" name="name" id="host-name">
+                </div>
+                <div class="form-input host-email">
+                    <label for="host-email">host-email</label>
+                    <input type="text" name="email" id="host-email">
+                </div>
+            </div>
+            
+            <h2 class="form-title">
+                #guests
+            </h2>
+            
+            <div class="form-guest">
+                <div class="form-input guest-name">
+                    <label for="guest-name">name</label>
+                    <input type="text" name="name" id="guest-name">
+                </div>
+                <div class="form-input guest-email">
+                    <label for="guest-email">host-email</label>
+                    <input type="text" name="email" id="guest-email">
+                </div>
+            </div>
+
+            <h2 class="form-title">
+                #event
+            </h2>
+            
+            <div class="form-event">
+                <div class="form-input event-name">
+                    <label for="event-name">event name</label>
+                    <input type="text" name="name" id="event-name">
+                </div>
+                <div class="form-input event-amount">
+                    <label for="event-amount">amount</label>
+                    <input type="number" name="amount" id="event-amount">
+                </div>
+                <div class="form-input event-date">
+                    <label for="event-date">date</label>
+                    <input type="date" name="date" id="event-date">
+                </div>
+                <div class="form-input event-place">
+                    <label for="event-place">place</label>
+                    <input type="text" name="place" id="event-place">
+                </div>
+                <div class="form-input event-comment">
+                    <label for="event-comment">comment</label>
+                    <textarea name="comment" id="event-comment" rows="5" cols="50">
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="form-submit-button">
+                <input type="submit" value="submit">
+            </div>
+        </form>
+    </main>
+    <footer>
+        <ul class="links">
+            <li>
+                <a href="#">legal</a>
+            </li>
+            <li>
+                <a href="#">share</a>
+            </li>
+            <li>
+                <a href="#">contact</a>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>
