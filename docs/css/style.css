@@ -26,7 +26,7 @@
 }
 
 form {
-    width: 700px;
+    width: min-content;
     margin: 1em auto;
     box-sizing: content-box;
 }
@@ -55,13 +55,23 @@ form {
     justify-content: center;
 }
 
+.guest-add {
+    width: 1.8rem;
+}
+
+.info {
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-style: italic;
+}
+
 
 /*==========================================
 ===================FOOTER===================
 ==========================================*/
 
 .links {
-    margin-top: 3em;
+    margin-top: 5em;
     margin-bottom: 1em;
     list-style-type: none;
     display: flex;
