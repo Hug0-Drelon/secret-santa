@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<!--
     <p class="description">
         Description of the app.
     </p>
@@ -77,5 +78,110 @@
         <div class="form-submit-button">
             <input type="submit" value="submit">
         </div>
-    </form>
+    </form> -->
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        <h2 class="form-title">
+            #host <span class="info">(included in participants)</span>
+        </h2>
+
+        {% set participantsNameLabel = form_label(form.participants.vars.prototype.name) %}
+        {% set participantsNameWidget = form_widget(form.participants.vars.prototype.name) %}
+        {% set participantsEmailLabel = form_label(form.participants.vars.prototype.email) %}
+        {% set participantsEmailWidget = form_widget(form.participants.vars.prototype.email) %}
+
+        <div class="form-host">
+            <div class="form-input host-name">
+                {% autoescape false %}
+                    {{ participantsNameLabel }}
+                    {{ participantsNameWidget }}
+                {% endautoescape %}
+            </div>
+            <div class="form-input host-email">
+                {% autoescape false %}
+                    {{ participantsEmailLabel }}
+                    {{ participantsEmailWidget }}
+                {% endautoescape %}
+            </div>
+        </div>
+        
+        <h2 class="form-title">
+            #guests <span class="info">(2 min. required)</span>
+        </h2>
+        
+        <div class="form-guest">
+            <div class="form-input guest-name">
+                {% autoescape false %}
+                    {{ participantsNameLabel }}
+                    {{ participantsNameWidget }}
+                {% endautoescape %}
+            </div>
+            <div class="form-input guest-email">
+                {% autoescape false %}
+                    {{ participantsEmailLabel }}
+                    {{ participantsEmailWidget }}
+                {% endautoescape %}
+            </div>
+            <div class="form-input guest-name">
+                {% autoescape false %}
+                    {{ participantsNameLabel }}
+                    {{ participantsNameWidget }}
+                {% endautoescape %}
+            </div>
+            <div class="form-input guest-email">
+                {% autoescape false %}
+                    {{ participantsEmailLabel }}
+                    {{ participantsEmailWidget }}
+                {% endautoescape %}
+            </div>
+
+            <template id="participant-form-template">
+                <div class="form-input guest-name">
+                    {% autoescape false %}
+                        {{ participantsNameLabel }}
+                        {{ participantsNameWidget }}
+                    {% endautoescape %}
+                </div>
+                <div class="form-input guest-email">
+                    {% autoescape false %}
+                        {{ participantsEmailLabel }}
+                        {{ participantsEmailWidget }}
+                    {% endautoescape %}
+                </div>
+            </template>
+            
+            <img class="guest-add" src="{{ asset('assets/images/add.png') }}" alt="add-icon">
+
+        </div>
+
+        <h2 class="form-title">
+            #event
+        </h2>
+        
+        <div class="form-event">
+            <div class="form-input event-name">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name) }}
+            </div>
+            <div class="form-input event-amount">
+                {{ form_label(form.amount) }}
+                {{ form_widget(form.amount) }}
+            </div>
+            <div class="form-input event-date">
+                {{ form_label(form.date) }}
+                {{ form_widget(form.date) }}
+            </div>
+            <div class="form-input event-place">
+                {{ form_label(form.place) }}
+                {{ form_widget(form.place) }}
+            </div>
+            <div class="form-input event-comment">
+                {{ form_label(form.comment) }}
+                {{ form_widget(form.comment) }}
+            </div>
+        </div>
+
+        <div class="form-submit-button">
+            <button type="submit">submit</button>
+        </div>
+    {{ form_end(form, {'render_rest': false}) }}
 {% endblock %}

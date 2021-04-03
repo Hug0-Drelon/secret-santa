@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -43,12 +45,6 @@ class Event
     private $date;
 
     /**
-     * @ORM\OneToOne(targetEntity=Participant::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $host;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -57,6 +53,17 @@ class Event
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Participant::class, mappedBy="event")
+     */
+    private $participants;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->participants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -123,18 +130,6 @@ class Event
         return $this;
     }
 
-    public function getHost(): ?Participant
-    {
-        return $this->host;
-    }
-
-    public function setHost(Participant $host): self
-    {
-        $this->host = $host;
-
-        return $this;
-    }
-
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -155,6 +150,36 @@ class Event
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Participant[]
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function addParticipant(Participant $participant): self
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+            $participant->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(Participant $participant): self
+    {
+        if ($this->participants->removeElement($participant)) {
+            // set the owning side to null (unless already changed)
+            if ($participant->getEvent() === $this) {
+                $participant->setEvent(null);
+            }
+        }
 
         return $this;
     }
