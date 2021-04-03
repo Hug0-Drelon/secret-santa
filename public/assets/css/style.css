@@ -49,14 +49,15 @@ form {
     font-style: italic;
 }
 
-.form-host, .form-guest, .form-event, .form-submit-button {
+.form-participants, .form-event, .form-submit-button {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.guest-add {
+.participant-add {
     width: 1.8rem;
+    margin-top: 1.5em;
 }
 
 .info {

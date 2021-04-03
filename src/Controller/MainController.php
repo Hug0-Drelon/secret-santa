@@ -23,6 +23,8 @@ class MainController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            dd($event);
             $em = $this->getDoctrine()->getManager();
             $em->persist($event);
             $em->flush;
