@@ -55,9 +55,13 @@ form {
     justify-content: center;
 }
 
+.participant-add-button {
+    margin-top: 1.5em;
+    text-align: center;
+}
+
 .participant-add {
     width: 1.8rem;
-    margin-top: 1.5em;
 }
 
 .info {

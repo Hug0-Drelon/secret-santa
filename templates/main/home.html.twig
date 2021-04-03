@@ -29,10 +29,12 @@
                 </div>
             </template>
             
-            <img class="participant-add" src="{{ asset('assets/images/add.png') }}" alt="add-icon">
-
         </div>
 
+        <div class="participant-add-button">
+            <img class="participant-add" id="add-button" src="{{ asset('assets/images/add.png') }}" alt="add-icon">
+        </div>
+        
         <h2 class="form-title">
             #event
         </h2>
@@ -66,4 +68,8 @@
             <button type="submit">submit</button>
         </div>
     {{ form_end(form, {'render_rest': false}) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/collection.js') }}"></script>
 {% endblock %}
