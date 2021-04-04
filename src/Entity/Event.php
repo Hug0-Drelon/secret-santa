@@ -55,7 +55,7 @@ class Event
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Participant::class, mappedBy="event")
+     * @ORM\OneToMany(targetEntity=Participant::class, mappedBy="event", cascade={"all"})
      */
     private $participants;
 

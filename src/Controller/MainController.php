@@ -23,11 +23,13 @@ class MainController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            dd($event);
             $em = $this->getDoctrine()->getManager();
             $em->persist($event);
-            $em->flush;
+            foreach ($event->getParticipants() as $participant) {
+                $participant->setEvent($event);
+            }
+            // dd($event);
+            $em->flush();
 
             $this->addFlash('success', 'event added');
 
