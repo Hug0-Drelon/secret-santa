@@ -17,13 +17,13 @@ class MainController extends AbstractController
     public function home(Request $request): Response
     {
         $event = new Event;
-
+        
         $form = $this->createForm(EventType::class, $event);
-
+        
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
-
+            
             dd($event);
             $em = $this->getDoctrine()->getManager();
             $em->persist($event);

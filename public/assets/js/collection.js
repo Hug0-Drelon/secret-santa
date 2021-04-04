@@ -18,9 +18,9 @@ const collection = {
         participantContainerElement.appendChild(participantFormElement);
         let nameInputElement = document.getElementById('event_participants___name___name');
         let emailInputElement = document.getElementById('event_participants___name___email');
-        nameInputElement.setAttribute('name', '<event[participants]['+collection.participantsCounter.toString()+'][name]');
+        nameInputElement.setAttribute('name', 'event[participants]['+collection.participantsCounter.toString()+'][name]');
         nameInputElement.id = ('event_participants___'+collection.participantsCounter.toString()+'___name');
-        emailInputElement.setAttribute('name', '<event[participants]['+collection.participantsCounter.toString()+'][email]');
+        emailInputElement.setAttribute('name', 'event[participants]['+collection.participantsCounter.toString()+'][email]');
         emailInputElement.id = ('event_participants___'+collection.participantsCounter.toString()+'___email');
     }
 }
