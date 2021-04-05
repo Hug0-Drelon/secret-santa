@@ -1,0 +1,85 @@
+:root {
+    font-family: 'Lato', sans-serif;
+}
+
+
+/*==========================================
+===================HEADER===================
+==========================================*/
+
+.title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.5rem;
+}
+
+
+/*==========================================
+====================MAIN====================
+==========================================*/
+
+.description {
+    text-align: center;
+    font-style: italic;
+}
+
+form {
+    width: min-content;
+    margin: 1em auto;
+    box-sizing: content-box;
+}
+
+.form-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+    margin-top: 4rem;
+    border-bottom: solid 2px black;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 2rem;
+}
+
+.form-input label {
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+.form-participants, .form-event, .form-submit-button {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.participant-add {
+    width: 1.8rem;
+    margin-top: 1.5em;
+}
+
+.info {
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-style: italic;
+}
+
+
+/*==========================================
+===================FOOTER===================
+==========================================*/
+
+.links {
+    margin-top: 5em;
+    margin-bottom: 1em;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+.links li:not(:last-child) {
+    margin-right: 3rem;
+    text-transform: capitalize;
+}

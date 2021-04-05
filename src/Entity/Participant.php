@@ -37,6 +37,17 @@ class Participant
      */
     private $updatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Event::class, inversedBy="participants")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $event;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +97,18 @@ class Participant
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getEvent(): ?Event
+    {
+        return $this->event;
+    }
+
+    public function setEvent(?Event $event): self
+    {
+        $this->event = $event;
 
         return $this;
     }

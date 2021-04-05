@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        <h2 class="form-title">
+            #participants <span class="info">(3 min. required)</span>
+        </h2>
+
+        {% set participantsNameLabel = form_label(form.participants.vars.prototype.name) %}
+        {% set participantsNameWidget = form_widget(form.participants.vars.prototype.name) %}
+        {% set participantsEmailLabel = form_label(form.participants.vars.prototype.email) %}
+        {% set participantsEmailWidget = form_widget(form.participants.vars.prototype.email) %}
+
+        <div class="form-participants">
+
+            <template id="participant-form-template">
+                <div class="form-input participant-name">
+                    {% autoescape false %}
+                        {{ participantsNameLabel }}
+                        {{ participantsNameWidget }}
+                    {% endautoescape %}
+                </div>
+                <div class="form-input participant-email">
+                    {% autoescape false %}
+                        {{ participantsEmailLabel }}
+                        {{ participantsEmailWidget }}
+                    {% endautoescape %}
+                </div>
+            </template>
+            
+            <img class="participant-add" src="{{ asset('assets/images/add.png') }}" alt="add-icon">
+
+        </div>
+
+        <h2 class="form-title">
+            #event
+        </h2>
+        
+        <div class="form-event">
+            <div class="form-input event-name">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name) }}
+            </div>
+            <div class="form-input event-amount">
+                {{ form_label(form.amount) }}
+                {{ form_widget(form.amount) }}
+            </div>
+            <div class="form-input event-date">
+                {{ form_label(form.date) }}
+                {{ form_widget(form.date) }}
+            </div>
+            <div class="form-input event-place">
+                {{ form_label(form.place) }}
+                {{ form_widget(form.place) }}
+            </div>
+            <div class="form-input event-comment">
+                {{ form_label(form.comment) }}
+                {{ form_widget(form.comment, {'attr': {'rows': '5', 'cols': '50'}}) }}
+            </div>
+        </div>
+
+        {{ form_row(form._token) }}
+
+        <div class="form-submit-button">
+            <button type="submit">submit</button>
+        </div>
+    {{ form_end(form, {'render_rest': false}) }}
+{% endblock %}
