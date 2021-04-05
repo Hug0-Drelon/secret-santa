@@ -43,6 +43,11 @@ class Participant
      */
     private $event;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isHost;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -109,6 +114,18 @@ class Participant
     public function setEvent(?Event $event): self
     {
         $this->event = $event;
+
+        return $this;
+    }
+
+    public function getIsHost(): ?bool
+    {
+        return $this->isHost;
+    }
+
+    public function setIsHost(bool $isHost): self
+    {
+        $this->isHost = $isHost;
 
         return $this;
     }
