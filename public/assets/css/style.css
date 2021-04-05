@@ -87,3 +87,17 @@ form {
     margin-right: 3rem;
     text-transform: capitalize;
 }
+
+
+/*==========================================
+===================SUCCESS==================
+==========================================*/
+
+.success-container {
+    margin-top: 36vh;
+    margin-bottom: 38vh;
+}
+
+.success-title, .success-text {
+    text-align: center;
+}

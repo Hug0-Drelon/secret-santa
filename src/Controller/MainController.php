@@ -35,13 +35,19 @@ class MainController extends AbstractController
             }
             $em->flush();
 
-            $this->addFlash('success', 'event added');
-
             return $this->redirectToRoute('home');
         }
 
         return $this->render('main/home.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/success", name="success", methods={"GET"})
+     */
+    public function success()
+    {
+        return $this->render('main/success.html.twig');
     }
 }
