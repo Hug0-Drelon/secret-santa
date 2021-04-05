@@ -49,7 +49,7 @@ form {
     font-style: italic;
 }
 
-.form-participants, .form-event, .form-submit-button {
+.form-host, .form-guests, .form-event, .form-submit-button {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

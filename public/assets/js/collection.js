@@ -6,16 +6,42 @@ const collection = {
 
 
     init: function () {
+        collection.displayHostInput();
+        collection.displayTheTwoRequiredGuests();
         collection.addButtonElement = document.getElementById('add-button');
         collection.addButtonElement.addEventListener('click', collection.handleClickAddButton);
     },
 
     handleClickAddButton: function (evt) {
         collection.participantsCounter++;
+        let guestsContainerElement = document.querySelector('.form-guests');
+        guestsContainerElement.appendChild(collection.cloneTemplateElement());
+        collection.changeIndexOnInput();
+    },
+
+    displayHostInput: function () {
+        collection.participantsCounter++;
+        let hostContainerElement = document.querySelector('.form-host');
+        hostContainerElement.appendChild(collection.cloneTemplateElement());
+        collection.changeIndexOnInput();
+    },
+
+    displayTheTwoRequiredGuests: function () {
+        for (let index = 0; index < 2; index++) {
+            collection.participantsCounter++;
+            let guestsContainerElement = document.querySelector('.form-guests');
+            guestsContainerElement.appendChild(collection.cloneTemplateElement());
+            collection.changeIndexOnInput();
+        }
+    },
+
+    cloneTemplateElement: function () {
         let templateElement = document.getElementById('participant-form-template');
-        let participantFormElement = templateElement.content.cloneNode(true);
-        let participantContainerElement = document.querySelector('.form-participants');
-        participantContainerElement.appendChild(participantFormElement);
+
+        return templateElement.content.cloneNode(true);
+    },
+
+    changeIndexOnInput: function () {
         let nameInputElement = document.getElementById('event_participants___name___name');
         let emailInputElement = document.getElementById('event_participants___name___email');
         nameInputElement.setAttribute('name', 'event[participants]['+collection.participantsCounter.toString()+'][name]');
