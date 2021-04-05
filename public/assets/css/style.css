@@ -93,11 +93,11 @@ form {
 ===================SUCCESS==================
 ==========================================*/
 
-.success-container {
+.confirm-container {
     margin-top: 36vh;
     margin-bottom: 38vh;
 }
 
-.success-title, .success-text {
+.confirm-title, .confirm-text {
     text-align: center;
 }
