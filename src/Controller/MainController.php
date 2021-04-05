@@ -25,7 +25,12 @@ class MainController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($event);
-            foreach ($event->getParticipants() as $participant) {
+
+            $participants = $event->getParticipants();
+            $host = $participants[1];
+            $host->setIsHost(true);
+
+            foreach ($participants as $participant) {
                 $participant->setEvent($event);
             }
             $em->flush();

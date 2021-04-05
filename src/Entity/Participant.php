@@ -51,6 +51,7 @@ class Participant
     public function __construct()
     {
         $this->createdAt = new \DateTime();
+        $this->isHost = false;
     }
 
     public function getId(): ?int
