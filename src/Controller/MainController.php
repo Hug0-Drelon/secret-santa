@@ -28,7 +28,6 @@ class MainController extends AbstractController
             foreach ($event->getParticipants() as $participant) {
                 $participant->setEvent($event);
             }
-            // dd($event);
             $em->flush();
 
             $this->addFlash('success', 'event added');
