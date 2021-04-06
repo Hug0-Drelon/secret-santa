@@ -52,10 +52,10 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/success", name="success", methods={"GET})
+     * @Route("/success", name="success", methods={"GET"})
      */
     public function success()
     {
-        return $this->render('main/confirm.html.twig');
+        return $this->render('main/success.html.twig');
     }
 }
