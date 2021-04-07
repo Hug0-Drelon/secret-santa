@@ -8,13 +8,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 class MainController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function home(Request $request): Response
+    public function home(Request $request, MailerInterface $mailer): Response
     {
         $event = new Event;
         
@@ -34,6 +36,14 @@ class MainController extends AbstractController
                 $participant->setEvent($event);
             }
             $em->flush();
+            
+            $mail = (new Email())
+                ->from('secret@santa.com')
+                ->to($host->getEmail())
+                ->subject('Confirm your draw')
+                ->text('test text');
+
+            $mailer->send($mail);
 
             return $this->redirectToRoute('home');
         }
