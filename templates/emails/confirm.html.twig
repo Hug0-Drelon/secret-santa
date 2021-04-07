@@ -1,0 +1,19 @@
+{% apply inline_css %}
+    <style>
+
+        :root {
+            font-family: sans-serif;
+        }
+       
+        .host-name {
+            font-weight: bold;
+        }
+
+    </style>
+
+    <h1>Thank You <span class="host-name">{{ name }}</span> for using Secret Santa !</h1>
+
+    <p>
+        Please follow this <a href="#">link</a> to confirm your email adress and run the random draw.
+    </p>
+{% endapply %}

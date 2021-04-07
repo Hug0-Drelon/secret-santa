@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Event;
 use App\Form\EventType;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
+use Symfony\Component\Mime\Address;
 
 class MainController extends AbstractController
 {
@@ -35,13 +36,15 @@ class MainController extends AbstractController
             foreach ($participants as $participant) {
                 $participant->setEvent($event);
             }
-            $em->flush();
+            // $em->flush();
             
-            $mail = (new Email())
-                ->from('secret@santa.com')
-                ->to($host->getEmail())
+            $mail = (new TemplatedEmail())
+                ->to(new Address($host->getEmail()))
                 ->subject('Confirm your draw')
-                ->text('test text');
+                ->htmlTemplate('emails/confirm.html.twig')
+                ->context([
+                    'name' => $host->getName(),
+                ]);
 
             $mailer->send($mail);
 
