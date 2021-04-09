@@ -17,14 +17,16 @@
         You have been invited by <span class="host-name">{{ host.name }}</span> to a party called "{{ event.name }}"
     </p>
 
-    <h2>{{ host.name }} wanted you to know this :</h2>
+    <p>
+        {{ host.name }} wanted you to know this :
+    </p>
 
     <p>
         "{{ event.comment }}"
     </p>
 
     <p>
-        The event will take place at {{ event.place }} the {{ event.date|date("m/d/Y") }} and the amount for the gits is {{ event.amount }} $.
+        The event will take place at {{ event.place }} the {{ event.date|date("m/d/Y") }} and the amount for the gifts is {{ event.amount }} $.
     </p>
 
     <p>

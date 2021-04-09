@@ -90,7 +90,7 @@ class MainController extends AbstractController
                 ->subject('The Secret Santa is on its way !')
                 ->htmlTemplate('emails/draw.html.twig')
                 ->context([
-                    'sender' => $participant->getName(),
+                    'sender' => $participant,
                     'recipient' => $participant->getRecipient(),
                     'event' => $event,
                     'host' => $host,
