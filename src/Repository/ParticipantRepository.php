@@ -47,4 +47,15 @@ class ParticipantRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function getHost($event)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.event = :e')
+            ->setParameter('e', $event)
+            ->andWhere('p.isHost = true')
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

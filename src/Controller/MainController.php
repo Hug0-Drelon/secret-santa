@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Event;
 use App\Form\EventType;
+use App\Repository\ParticipantRepository;
 use App\Service\RandomDraw;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
@@ -77,9 +78,11 @@ class MainController extends AbstractController
     /**
      * @Route("/draw/{id}", name="draw", methods={"GET"})
      */
-    public function draw(Event $event, RandomDraw $randomDraw, MailerInterface $mailer)
+    public function draw(Event $event, RandomDraw $randomDraw, MailerInterface $mailer, ParticipantRepository $participantRepository)
     {
         $participants = $randomDraw->runDraw($event);
+
+        $host = $participantRepository->getHost($event);
 
         foreach ($participants as $participant ) {
             $mail = (new TemplatedEmail())
@@ -90,6 +93,7 @@ class MainController extends AbstractController
                     'sender' => $participant->getName(),
                     'recipient' => $participant->getRecipient(),
                     'event' => $event,
+                    'host' => $host,
                 ]);
 
             $mailer->send($mail);

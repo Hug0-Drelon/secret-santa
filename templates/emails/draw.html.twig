@@ -1,0 +1,33 @@
+{% apply inline_css %}
+    <style>
+
+        :root {
+            font-family: sans-serif;
+        }
+       
+        .host-name {
+            font-weight: bold;
+        }
+
+    </style>
+
+    <h1>Hello {{ sender.name }} !</h1>
+
+    <p>
+        You have been invited by {{ host.name }} to a party called "{{ event.name }}"
+    </p>
+
+    <h2>{{ host.name }} wanted you to know this :</h2>
+
+    <p>
+        "{{ event.comment }}"
+    </p>
+
+    <p>
+        The event will take place at {{ event.place }} the {{ event.date|date("m/d/Y") }} and the amount for the gits is {{ event.amount }} $.
+    </p>
+
+    <p>
+        Also, you've picked {{ recipient.name }}. We are sure that you'll find a awesome present !
+    </p>
+{% endapply %}
