@@ -36,7 +36,7 @@ class MainController extends AbstractController
             foreach ($participants as $participant) {
                 $participant->setEvent($event);
             }
-            // $em->flush();
+            $em->flush();
             
             $mail = (new TemplatedEmail())
                 ->to(new Address($host->getEmail()))
@@ -44,11 +44,12 @@ class MainController extends AbstractController
                 ->htmlTemplate('emails/confirm.html.twig')
                 ->context([
                     'name' => $host->getName(),
+                    'event' => $event,
                 ]);
 
             $mailer->send($mail);
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('confirm');
         }
 
         return $this->render('main/home.html.twig', [
@@ -70,5 +71,13 @@ class MainController extends AbstractController
     public function success()
     {
         return $this->render('main/success.html.twig');
+    }
+
+    /**
+     * @Route("/draw/{id}", name="draw", methods={"GET})
+     */
+    public function draw(Event $event)
+    {
+        
     }
 }

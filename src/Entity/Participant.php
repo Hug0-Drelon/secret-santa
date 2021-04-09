@@ -48,6 +48,11 @@ class Participant
      */
     private $isHost;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Participant::class, cascade={"persist", "remove"})
+     */
+    private $recipient;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -127,6 +132,18 @@ class Participant
     public function setIsHost(bool $isHost): self
     {
         $this->isHost = $isHost;
+
+        return $this;
+    }
+
+    public function getRecipient(): ?self
+    {
+        return $this->recipient;
+    }
+
+    public function setRecipient(?self $recipient): self
+    {
+        $this->recipient = $recipient;
 
         return $this;
     }
