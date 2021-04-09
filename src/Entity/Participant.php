@@ -50,6 +50,7 @@ class Participant
 
     /**
      * @ORM\OneToOne(targetEntity=Participant::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $recipient;
 

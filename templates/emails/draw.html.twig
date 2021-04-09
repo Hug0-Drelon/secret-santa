@@ -5,16 +5,16 @@
             font-family: sans-serif;
         }
        
-        .host-name {
+        .host-name, .recipient-name, .sender-name {
             font-weight: bold;
         }
 
     </style>
 
-    <h1>Hello {{ sender.name }} !</h1>
+    <h1>Hello <span class="sender-name">{{ sender.name }}</span> !</h1>
 
     <p>
-        You have been invited by {{ host.name }} to a party called "{{ event.name }}"
+        You have been invited by <span class="host-name">{{ host.name }}</span> to a party called "{{ event.name }}"
     </p>
 
     <h2>{{ host.name }} wanted you to know this :</h2>
@@ -28,6 +28,6 @@
     </p>
 
     <p>
-        Also, you've picked {{ recipient.name }}. We are sure that you'll find a awesome present !
+        Also, you've picked <span class="recipient-name">{{ recipient.name }}</span>. We are sure that you'll find an awesome present !
     </p>
 {% endapply %}
