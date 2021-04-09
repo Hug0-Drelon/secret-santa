@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Event;
 use App\Form\EventType;
+use App\Service\RandomDraw;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -74,10 +75,26 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/draw/{id}", name="draw", methods={"GET})
+     * @Route("/draw/{id}", name="draw", methods={"GET"})
      */
-    public function draw(Event $event)
+    public function draw(Event $event, RandomDraw $randomDraw, MailerInterface $mailer)
     {
-        
+        $participants = $randomDraw->runDraw($event);
+
+        foreach ($participants as $participant ) {
+            $mail = (new TemplatedEmail())
+                ->to(new Address($participant->getEmail()))
+                ->subject('The Secret Santa is on its way !')
+                ->htmlTemplate('emails/draw.html.twig')
+                ->context([
+                    'sender' => $participant->getName(),
+                    'recipient' => $participant->getRecipient(),
+                    'event' => $event,
+                ]);
+
+            $mailer->send($mail);
+        }
+
+        return $this->redirectToRoute("success");
     }
 }
