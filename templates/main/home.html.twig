@@ -53,6 +53,10 @@
                 {{ form_label(form.comment) }}
                 {{ form_widget(form.comment, {'attr': {'rows': '5', 'cols': '50'}}) }}
             </div>
+            <div class="form-input event-authorized">
+                {{ form_label(form.authorized) }}
+                {{ form_widget(form.authorized) }}
+            </div>
         </div>
 
         {{ form_row(form._token) }}

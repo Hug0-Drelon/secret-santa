@@ -22,6 +22,7 @@ class Event
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $name;
 
@@ -61,11 +62,15 @@ class Event
 
     /**
      * @ORM\OneToMany(targetEntity=Participant::class, mappedBy="event", cascade={"all"})
+     * @Assert\Valid()
+     * @Assert\Count(min = 3)
      */
     private $participants;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotBlank
+     * @Assert\Type(type={"bool"})
      */
     private $authorized;
 

@@ -70,6 +70,15 @@ form {
     font-style: italic;
 }
 
+.event-authorized {
+    display: inline;
+}
+
+.event-authorized input {
+    padding-left: 1em;
+    vertical-align: text-bottom;
+}
+
 
 /*==========================================
 ===================FOOTER===================
