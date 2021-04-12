@@ -13,8 +13,12 @@ class ParticipantType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('email', EmailType::class)
+            ->add('name', null, [
+                'error_bubbling' => true,
+            ])
+            ->add('email', EmailType::class, [
+                'error_bubbling' => true,
+            ])
         ;
     }
 

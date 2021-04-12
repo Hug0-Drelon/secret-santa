@@ -27,6 +27,10 @@
         <div class="participant-add-button">
             <img class="participant-add" id="add-button" src="{{ asset('assets/images/add.png') }}" alt="add-icon">
         </div>
+
+        <div class="form-errors-participants">
+            {{ form_errors(form) }}
+        </div>
         
         <h2 class="form-title">
             #event
@@ -36,26 +40,32 @@
             <div class="form-input event-name">
                 {{ form_label(form.name) }}
                 {{ form_widget(form.name) }}
+                {{ form_errors(form.name) }}
             </div>
             <div class="form-input event-amount">
                 {{ form_label(form.amount) }}
                 {{ form_widget(form.amount) }}
+                {{ form_errors(form.amount) }}
             </div>
             <div class="form-input event-date">
                 {{ form_label(form.date) }}
                 {{ form_widget(form.date) }}
+                {{ form_errors(form.date) }}
             </div>
             <div class="form-input event-place">
                 {{ form_label(form.place) }}
                 {{ form_widget(form.place) }}
+                {{ form_errors(form.place) }}
             </div>
             <div class="form-input event-comment">
                 {{ form_label(form.comment) }}
                 {{ form_widget(form.comment, {'attr': {'rows': '5', 'cols': '50'}}) }}
+                {{ form_errors(form.comment) }}
             </div>
             <div class="form-input event-authorized">
                 {{ form_label(form.authorized) }}
                 {{ form_widget(form.authorized) }}
+                {{ form_errors(form.authorized) }}
             </div>
         </div>
 
@@ -64,6 +74,7 @@
         <div class="form-submit-button">
             <button type="submit">submit</button>
         </div>
+
     {{ form_end(form, {'render_rest': false}) }}
 
     <template id="participant-form-template">
