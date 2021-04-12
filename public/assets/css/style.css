@@ -26,7 +26,7 @@
 }
 
 form {
-    width: min-content;
+    width: 550px;
     margin: 1em auto;
     box-sizing: content-box;
 }
@@ -77,6 +77,20 @@ form {
 .event-authorized input {
     padding-left: 1em;
     vertical-align: text-bottom;
+}
+
+
+/*==========================================
+===================ERRORS===================
+==========================================*/
+
+.form-input ul {
+    list-style: none;
+    font-size: 0.8em;
+    color: red;
+    margin-top: 0;
+    margin-bottom: -0.8em;
+    padding-left: 0;
 }
 
 
