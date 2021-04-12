@@ -6,8 +6,9 @@ use App\Entity\Event;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class EventType extends AbstractType
 {
@@ -15,12 +16,11 @@ class EventType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('comment')
+            ->add('comment', TextareaType::class)
             ->add('amount')
             ->add('place')
             ->add('date', DateType::class, [
                 'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd',
             ])
             ->add('authorized', null, [
                 'label' => 'I have the authorization to use these e-mails',

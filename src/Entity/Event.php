@@ -46,7 +46,7 @@ class Event
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Assert\DateTime
+     * @Assert\Type("DateTime")
      */
     private $date;
 
