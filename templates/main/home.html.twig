@@ -9,7 +9,7 @@
         {% set participantsEmailWidget = form_widget(form.participants.vars.prototype.email) %}
 
         <h2 class="form-title">
-            #host <span class="info">(included in participants)</span>
+            #host <span class="info">(required and included in participants)</span>
         </h2>
 
         <div class="form-host">
@@ -92,14 +92,16 @@
         </div>
     </template>
 
-    <ul class="submittedParticipants" hidden>
-        {% for submittedParticipant in submittedParticipants %}
-            <li 
-                data-name="{{ submittedParticipant.name|e }}" 
-                data-email="{{ submittedParticipant.email|e }}"
-            ></li>
-        {% endfor %}
-    </ul>
+    {% if submittedParticipants is not empty %}
+        <ul id="submittedParticipants" hidden>
+            {% for submittedParticipant in submittedParticipants %}
+                <li 
+                    data-name="{{ submittedParticipant.name|e }}" 
+                    data-email="{{ submittedParticipant.email|e }}"
+                ></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 
 {% endblock %}
 

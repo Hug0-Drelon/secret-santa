@@ -4,10 +4,18 @@ const collection = {
 
     participantsCounter: 0,
 
+    submittedParticipantsContainer: undefined,
+
 
     init: function () {
-        collection.displayHostInput();
-        collection.displayTheTwoRequiredGuests();
+        displaySubmittedParticipants.submittedParticipantsContainer = document.getElementById('submittedParticipants');
+        
+        if (displaySubmittedParticipants.submittedParticipantsContainer != null) {
+            displaySubmittedParticipants.displaySubmittedParticipants();
+        }else {
+            collection.displayHostInput();
+            collection.displayTheTwoRequiredGuests();
+        };
         collection.addButtonElement = document.getElementById('add-button');
         collection.addButtonElement.addEventListener('click', collection.handleClickAddButton);
     },
