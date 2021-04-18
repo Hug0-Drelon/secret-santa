@@ -28,10 +28,10 @@
             <img class="participant-add" id="add-button" src="{{ asset('assets/images/add.png') }}" alt="add-icon">
         </div>
 
-        <div class="form-errors-participants" hidden>
+        <div class="participants-errors-list" hidden>
             {{ form_errors(form) }}
         </div>
-        
+
         <h2 class="form-title">
             #event
         </h2>
@@ -92,8 +92,18 @@
         </div>
     </template>
 
+    <ul class="submittedParticipants" hidden>
+        {% for submittedParticipant in submittedParticipants %}
+            <li 
+                data-name="{{ submittedParticipant.name|e }}" 
+                data-email="{{ submittedParticipant.email|e }}"
+            ></li>
+        {% endfor %}
+    </ul>
+
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('assets/js/collection.js') }}"></script>
+    <script src="{{ asset('assets/js/participantsErrors.js') }}"></script>
 {% endblock %}

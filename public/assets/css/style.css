@@ -79,18 +79,27 @@ form {
     vertical-align: text-bottom;
 }
 
+.form-submit-button {
+    margin-top: 2em;
+}
+
 
 /*==========================================
 ===================ERRORS===================
 ==========================================*/
 
-.form-input ul {
+.form-input ul, .form-errors-participants li {
     list-style: none;
     font-size: 0.8em;
     color: red;
     margin-top: 0;
     margin-bottom: -0.8em;
     padding-left: 0;
+}
+
+.form-errors-participants li {
+    margin-top: 1em;
+    text-align: center;
 }
 
 

@@ -54,8 +54,12 @@ class MainController extends AbstractController
             return $this->redirectToRoute('confirm');
         }
 
+        $submittedEvents = $form->getData();
+        dump($submittedEvents);
+
         return $this->render('main/home.html.twig', [
             'form' => $form->createView(),
+            'submittedParticipants' => $submittedEvents->getParticipants(),
         ]);
     }
 
