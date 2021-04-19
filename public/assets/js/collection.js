@@ -8,10 +8,10 @@ const collection = {
 
 
     init: function () {
-        displaySubmittedParticipants.submittedParticipantsContainer = document.getElementById('submittedParticipants');
+        collection.submittedParticipantsContainer = document.getElementById('submittedParticipants');
         
-        if (displaySubmittedParticipants.submittedParticipantsContainer != null) {
-            displaySubmittedParticipants.displaySubmittedParticipants();
+        if (collection.submittedParticipantsContainer != null) {
+            collection.displaySubmittedParticipants();
         }else {
             collection.displayHostInput();
             collection.displayTheTwoRequiredGuests();
@@ -20,17 +20,46 @@ const collection = {
         collection.addButtonElement.addEventListener('click', collection.handleClickAddButton);
     },
 
+    displaySubmittedParticipants: function (params) {
+        let submittedParticipantsElements = document.getElementsByClassName('submittedParticipantsData');
+        Array.from(submittedParticipantsElements).forEach(element => {
+            let submittedName = element.dataset.name;
+            let submittedEmail = element.dataset.email;
+            if (collection.participantsCounter === 0) {
+                collection.displayHostInput(submittedName, submittedEmail);
+            } else {
+                collection.addParticipantInput(submittedName, submittedEmail);
+            }
+        });
+    },
+
     handleClickAddButton: function (evt) {
+        collection.addParticipantInput();
+    },
+    
+    addParticipantInput: function (submittedName = null, submittedEmail = null) {
         collection.participantsCounter++;
         let guestsContainerElement = document.querySelector('.form-guests');
         guestsContainerElement.appendChild(collection.cloneTemplateElement());
+        if (submittedName != null && submittedEmail != null) {
+            let nameInputElement = document.getElementById('event_participants___name___name');
+            nameInputElement.setAttribute('value', submittedName);
+            let emailInputElement = document.getElementById('event_participants___name___email');
+            emailInputElement.setAttribute('value', submittedEmail);
+        }
         collection.changeIndexOnInput();
     },
 
-    displayHostInput: function () {
+    displayHostInput: function (submittedName = null, submittedEmail = null) {
         collection.participantsCounter++;
         let hostContainerElement = document.querySelector('.form-host');
         hostContainerElement.appendChild(collection.cloneTemplateElement());
+        if (submittedName != null && submittedEmail != null) {
+            let nameInputElement = document.getElementById('event_participants___name___name');
+            nameInputElement.setAttribute('value', submittedName);
+            let emailInputElement = document.getElementById('event_participants___name___email');
+            emailInputElement.setAttribute('value', submittedEmail);
+        }
         collection.changeIndexOnInput();
     },
 

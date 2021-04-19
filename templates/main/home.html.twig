@@ -95,7 +95,7 @@
     {% if submittedParticipants is not empty %}
         <ul id="submittedParticipants" hidden>
             {% for submittedParticipant in submittedParticipants %}
-                <li 
+                <li class="submittedParticipantsData"
                     data-name="{{ submittedParticipant.name|e }}" 
                     data-email="{{ submittedParticipant.email|e }}"
                 ></li>
