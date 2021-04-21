@@ -130,13 +130,36 @@ form {
     list-style-type: none;
     display: flex;
     justify-content: center;
+    text-transform: capitalize;
 }
 
 .links li:not(:last-child) {
     margin-right: 3rem;
-    text-transform: capitalize;
 }
 
+.links a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.1em;
+}
+
+.links a:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 0;
+    position: relative;
+    background: black;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.links a:hover:after {
+    width: 100%; 
+    left: 0; 
+}
 
 /*==========================================
 ===================SUCCESS==================
