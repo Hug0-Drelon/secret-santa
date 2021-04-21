@@ -46,8 +46,15 @@ const collection = {
             nameInputElement.setAttribute('value', submittedName);
             let emailInputElement = document.getElementById('event_participants___name___email');
             emailInputElement.setAttribute('value', submittedEmail);
+        }else {
+            let nameInputElement = document.getElementById('event_participants___name___name');
+            collection.addFocusOnInput(nameInputElement);
         }
         collection.changeIndexOnInput();
+    },
+
+    addFocusOnInput: function (inputElement) {
+        inputElement.focus();
     },
 
     displayHostInput: function (submittedName = null, submittedEmail = null) {
