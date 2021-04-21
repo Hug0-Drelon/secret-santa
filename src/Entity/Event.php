@@ -47,6 +47,7 @@ class Event
     /**
      * @ORM\Column(type="datetime", nullable=true)
      * @Assert\Type("DateTime")
+     * @Assert\GreaterThanOrEqual("today UTC", message = "The date should be today or later.")
      */
     private $date;
 
