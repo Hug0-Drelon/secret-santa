@@ -60,6 +60,14 @@ form {
     text-align: center;
 }
 
+.participant-add-button img {
+    transition: all, 0.2s;
+}
+
+.participant-add-button img:hover {
+    filter: opacity(40%);
+}
+
 .participant-add {
     width: 1.8rem;
 }
@@ -90,7 +98,12 @@ form {
     color: white;
     padding: 0.4em;
     font-weight: bold;
-    font-size: 1.4em;
+    font-size: 1.3em;
+    transition: all, 0.2s;
+}
+
+.form-submit_button:hover {
+    background-color: grey;
 }
 
 
