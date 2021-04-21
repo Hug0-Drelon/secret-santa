@@ -15,7 +15,9 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', null, [
+                'label' => "Name (required)",
+            ])
             ->add('comment', TextareaType::class)
             ->add('amount')
             ->add('place')
@@ -23,7 +25,7 @@ class EventType extends AbstractType
                 'widget' => 'single_text',
             ])
             ->add('authorized', null, [
-                'label' => 'I have the authorization to use these e-mails',
+                'label' => 'I have the authorization to use these e-mails (required)',
             ])
             ->add('participants', CollectionType::class, [
                 'entry_type' => ParticipantType::class,
