@@ -63,7 +63,7 @@ class Event
     /**
      * @ORM\OneToMany(targetEntity=Participant::class, mappedBy="event", cascade={"all"})
      * @Assert\Valid()
-     * @Assert\Count(min = 3)
+     * @Assert\Count(min = 3, minMessage = "{{ limit }} participants or more should be specified.")
      */
     private $participants;
 
