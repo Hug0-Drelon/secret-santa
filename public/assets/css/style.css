@@ -2,6 +2,10 @@
     font-family: 'Lato', sans-serif;
 }
 
+:root {
+    --main-color: #002A01;
+  }
+
 
 /*==========================================
 ===================HEADER===================
@@ -24,6 +28,11 @@
     width: 100%;
     position: absolute;
     top: 1em;
+}
+
+.title a {
+    text-decoration: none;
+    color: #002A01;
 }
 
 .description {
@@ -52,7 +61,7 @@ form {
     font-size: 1.2rem;
     margin-bottom: 0.2rem;
     margin-top: 4rem;
-    border-bottom: solid 2px black;
+    border-bottom: solid 2px #002A01;
 }
 
 .form-input {
@@ -78,11 +87,11 @@ form {
 }
 
 .participant-add-button img {
-    transition: all, 0.2s;
+    transition: all, 0.6s;
 }
 
 .participant-add-button img:hover {
-    filter: opacity(40%);
+    transform: rotate(360deg);
 }
 
 .participant-add {
@@ -111,7 +120,7 @@ form {
 .form-submit_button {
     border: 0;
     border-radius: 7px;
-    background-color: black;
+    background-color: #002A01;
     color: white;
     padding: 0.4em;
     font-weight: bold;
@@ -120,7 +129,7 @@ form {
 }
 
 .form-submit_button:hover {
-    background-color: grey;
+    background-color: #0B610D;
 }
 
 
@@ -169,7 +178,7 @@ form {
 
 .links a {
     text-decoration: none;
-    color: black;
+    color: #002A01;
     font-size: 1.1em;
 }
 
@@ -181,7 +190,7 @@ form {
     height: 2px;
     left: 0;
     position: relative;
-    background: black;
+    background: #002A01;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
 }

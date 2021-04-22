@@ -13,9 +13,11 @@
     </head>
     <body>
         <header>
-            <img id="secret-santa-img" src="{{ asset('assets/images/secret-santa.png') }}" alt="secret santa">
+            <a href="{{ path('home') }}">
+                <img id="secret-santa-img" src="{{ asset('assets/images/secret-santa.png') }}" alt="secret santa">
+            </a>
             <h1 class="title">
-                Secret Santa
+                <a href="{{ path('home') }}">Secret Santa</a>
             </h1>
             <p class="description">
                 The best way to plan your party and randomly assigned participants a person to give a gift !
