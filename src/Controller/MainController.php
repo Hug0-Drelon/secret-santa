@@ -55,7 +55,6 @@ class MainController extends AbstractController
         }
 
         $submittedEvents = $form->getData();
-        dump($submittedEvents);
 
         return $this->render('main/home.html.twig', [
             'form' => $form->createView(),
