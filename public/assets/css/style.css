@@ -61,7 +61,24 @@ form {
     font-size: 1.2rem;
     margin-bottom: 0.2rem;
     margin-top: 4rem;
-    border-bottom: solid 2px #002A01;
+}
+
+.form-title::after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 4px;
+    left: 0;
+    position: relative;
+    background: #002A01;
+    transition: width 0.3s ease 0s;
+    width: 0;
+}
+
+.form-title--animated:after {
+    width: 100%;
+    left: 0;
 }
 
 .form-input {
