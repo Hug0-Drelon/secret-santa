@@ -9,7 +9,7 @@
         {% set participantsEmailWidget = form_widget(form.participants.vars.prototype.email) %}
 
         <h2 class="form-title">
-            #host <span class="info">(included in participants)</span>
+            #host <span class="info">(required and included in participants)</span>
         </h2>
 
         <div class="form-host">
@@ -27,7 +27,11 @@
         <div class="participant-add-button">
             <img class="participant-add" id="add-button" src="{{ asset('assets/images/add.png') }}" alt="add-icon">
         </div>
-        
+
+        <div class="participants-errors-list" hidden>
+            {{ form_errors(form) }}
+        </div>
+
         <h2 class="form-title">
             #event
         </h2>
@@ -36,30 +40,41 @@
             <div class="form-input event-name">
                 {{ form_label(form.name) }}
                 {{ form_widget(form.name) }}
+                {{ form_errors(form.name) }}
             </div>
             <div class="form-input event-amount">
                 {{ form_label(form.amount) }}
                 {{ form_widget(form.amount) }}
+                {{ form_errors(form.amount) }}
             </div>
             <div class="form-input event-date">
                 {{ form_label(form.date) }}
                 {{ form_widget(form.date) }}
+                {{ form_errors(form.date) }}
             </div>
             <div class="form-input event-place">
                 {{ form_label(form.place) }}
                 {{ form_widget(form.place) }}
+                {{ form_errors(form.place) }}
             </div>
             <div class="form-input event-comment">
                 {{ form_label(form.comment) }}
                 {{ form_widget(form.comment, {'attr': {'rows': '5', 'cols': '50'}}) }}
+                {{ form_errors(form.comment) }}
+            </div>
+            <div class="form-input event-authorized">
+                {{ form_label(form.authorized) }}
+                {{ form_widget(form.authorized) }}
+                {{ form_errors(form.authorized) }}
             </div>
         </div>
 
         {{ form_row(form._token) }}
 
-        <div class="form-submit-button">
-            <button type="submit">submit</button>
+        <div class="form-submit">
+            <button class="form-submit_button" type="submit">submit</button>
         </div>
+
     {{ form_end(form, {'render_rest': false}) }}
 
     <template id="participant-form-template">
@@ -77,8 +92,20 @@
         </div>
     </template>
 
+    {% if submittedParticipants is not empty %}
+        <ul id="submittedParticipants" hidden>
+            {% for submittedParticipant in submittedParticipants %}
+                <li class="submittedParticipantsData"
+                    data-name="{{ submittedParticipant.name|e }}" 
+                    data-email="{{ submittedParticipant.email|e }}"
+                ></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('assets/js/collection.js') }}"></script>
+    <script src="{{ asset('assets/js/participantsErrors.js') }}"></script>
 {% endblock %}

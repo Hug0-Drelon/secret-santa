@@ -6,6 +6,7 @@ use App\Repository\EventRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EventRepository::class)
@@ -21,26 +22,32 @@ class Event
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(min = 2, max = 1500)
      */
     private $comment;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\PositiveOrZero
      */
     private $amount;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(min = 2, max = 255)
      */
     private $place;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\Type("DateTime")
+     * @Assert\GreaterThanOrEqual("today UTC", message = "The date should be today or later.")
      */
     private $date;
 
@@ -56,8 +63,17 @@ class Event
 
     /**
      * @ORM\OneToMany(targetEntity=Participant::class, mappedBy="event", cascade={"all"})
+     * @Assert\Valid()
+     * @Assert\Count(min = 3, minMessage = "{{ limit }} participants or more should be specified.")
      */
     private $participants;
+
+    /**
+     * @ORM\Column(type="boolean")
+     * @Assert\NotBlank
+     * @Assert\Type(type={"bool"})
+     */
+    private $authorized;
 
     public function __construct()
     {
@@ -180,6 +196,18 @@ class Event
                 $participant->setEvent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAuthorized(): ?bool
+    {
+        return $this->authorized;
+    }
+
+    public function setAuthorized(bool $authorized): self
+    {
+        $this->authorized = $authorized;
 
         return $this;
     }

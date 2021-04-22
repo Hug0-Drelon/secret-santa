@@ -7,12 +7,29 @@
 ===================HEADER===================
 ==========================================*/
 
+#secret-santa-img {
+    position: absolute;
+    width: 10em;
+    top: 0;
+    margin-top: 1em;
+    margin-left: 1em;
+}
+
 .title {
     text-align: center;
     font-size: 3rem;
     font-weight: bold;
     text-transform: uppercase;
     line-height: 1.5rem;
+    width: 100%;
+    position: absolute;
+    top: 1em;
+}
+
+.description {
+    text-align: center;
+    font-style: italic;
+    margin-top: 8em;
 }
 
 
@@ -26,7 +43,7 @@
 }
 
 form {
-    width: min-content;
+    width: 550px;
     margin: 1em auto;
     box-sizing: content-box;
 }
@@ -49,7 +66,7 @@ form {
     font-style: italic;
 }
 
-.form-host, .form-guests, .form-event, .form-submit-button {
+.form-host, .form-guests, .form-event, .form-submit {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -60,6 +77,14 @@ form {
     text-align: center;
 }
 
+.participant-add-button img {
+    transition: all, 0.2s;
+}
+
+.participant-add-button img:hover {
+    filter: opacity(40%);
+}
+
 .participant-add {
     width: 1.8rem;
 }
@@ -68,6 +93,60 @@ form {
     font-size: 0.8rem;
     font-weight: 400;
     font-style: italic;
+}
+
+.event-authorized {
+    display: inline;
+}
+
+.event-authorized input {
+    padding-left: 1em;
+    vertical-align: text-bottom;
+}
+
+.form-submit {
+    margin-top: 2em;
+}
+
+.form-submit_button {
+    border: 0;
+    border-radius: 7px;
+    background-color: black;
+    color: white;
+    padding: 0.4em;
+    font-weight: bold;
+    font-size: 1.3em;
+    transition: all, 0.2s;
+}
+
+.form-submit_button:hover {
+    background-color: grey;
+}
+
+
+/*==========================================
+===================ERRORS===================
+==========================================*/
+
+.form-input ul, .form-errors-participants li, .participants-errors-list ul {
+    list-style: none;
+    font-size: 0.8em;
+    color: red;
+    margin-top: 0;
+    margin-bottom: -0.8em;
+    padding-left: 0;
+}
+
+.form-errors-participants li {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.participants-errors-list ul {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 
@@ -81,13 +160,36 @@ form {
     list-style-type: none;
     display: flex;
     justify-content: center;
+    text-transform: capitalize;
 }
 
 .links li:not(:last-child) {
     margin-right: 3rem;
-    text-transform: capitalize;
 }
 
+.links a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.1em;
+}
+
+.links a:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 0;
+    position: relative;
+    background: black;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.links a:hover:after {
+    width: 100%; 
+    left: 0; 
+}
 
 /*==========================================
 ===================SUCCESS==================

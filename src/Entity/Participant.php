@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ParticipantRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ParticipantRepository::class)
@@ -19,11 +20,17 @@ class Participant
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Names should not be blank")
+     * @Assert\Length(min = 2, max = 255, 
+     *                  maxMessage = "Names should have {{ limit }} characters or less.",
+     *                  minMessage = "Names should have {{ limit }} characters or more.")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message = "Emails should not be blank")
+     * @Assert\Email(message = "Emails must be valid.")
      */
     private $email;
 
