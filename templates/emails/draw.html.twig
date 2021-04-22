@@ -13,23 +13,44 @@
 
     <h1>Hello <span class="sender-name">{{ sender.name }}</span> !</h1>
 
-    <p>
-        You have been invited by <span class="host-name">{{ host.name }}</span> to a party called "{{ event.name }}"
-    </p>
+    {% if sender.name is same as(host.name) %}
+        <p>
+            You've picked <span class="recipient-name">{{ recipient.name }}</span>. We are sure that you'll find an awesome present !
+        </p>
+    {% else %}
+        <p>
+            You have been invited by <span class="host-name">{{ host.name }}</span> to a party called "{{ event.name }}"
+            {% if event.date is not empty %}
+                the {{ event.date|date("m/d/Y") }}
+            {% endif %}
 
-    <p>
-        {{ host.name }} wanted you to know this :
-    </p>
+            {% if event.place is not empty %}
+                at {{ event.place }}
+            {% endif %}
 
-    <p>
-        "{{ event.comment }}"
-    </p>
+            {% if event.amount is not empty %}
+                and the amount for gifts is {{ event.amount }} $
+            {% endif %}
+            .
+        </p>
 
-    <p>
-        The event will take place at {{ event.place }} the {{ event.date|date("m/d/Y") }} and the amount for gifts is {{ event.amount }} $.
-    </p>
+        {% if event.comment is not empty %}
+            <p>
+                {{ host.name }} has a message for you :
+            </p>
+        
+            <p>
+                "{{ event.comment }}"
+            </p>
+        {% endif %}
 
-    <p>
-        Also, you've picked <span class="recipient-name">{{ recipient.name }}</span>. We are sure that you'll find an awesome present !
-    </p>
+        <p>
+            Also, you've picked <span class="recipient-name">{{ recipient.name }}</span>. We are sure that you'll find an awesome present !
+        </p>
+
+        <p>
+            Create your own secret santa random draw <a href="{{ url('home') }}">here</a> !
+        </p>
+    {% endif %}
+
 {% endapply %}
